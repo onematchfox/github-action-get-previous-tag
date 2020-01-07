@@ -6,8 +6,12 @@ Github Action that gets the latest tag from git
 
 ## Output
 
-This action has only one output, namely, `tag` for the latest tag this action finds. When no tag is found or another 
-error occurs it exits with code `1`.
+This action outputs 2 outputs - the current tag, both prefixed with v and without. If the current tag is prefixed with `v` then this will be stripped in the `tag` output. For example, given the input `v1.2.3` or `1.2.3` the same values will be output:
+
+- `tag`: `1.2.3`
+- `v_tag`: `v1.2.3`
+
+When no tag is found or another error occurs it exits with code `1`.
 
 ## Example
 

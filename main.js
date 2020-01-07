@@ -8,8 +8,15 @@ exec('git describe --tags `git rev-list --tags --max-count=1`', (err, tag, stder
         return;
     }
 
-
     console.log('\x1b[32m%s\x1b[0m', `Found tag: ${tag}`);
+
+    if (tag.startsWith("v"))
+    {
+        tag = tag.substr(1, tag.length - 1);
+    }
+
     console.log(`::set-output name=tag::${tag}`);
+    console.log(`::set-output name=v_tag::v${tag}`);
+
     process.exit(0);
 });
